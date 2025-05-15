@@ -1,3 +1,5 @@
+// app/layout.js (or app/layout.tsx)
+import './globals.css'  
 
 export const metadata = {
   title: "Create Next App",
