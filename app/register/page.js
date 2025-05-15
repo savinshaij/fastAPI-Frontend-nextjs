@@ -2,6 +2,9 @@
 import Link from "next/link";
 import { useState } from "react";
 
+
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
 export default function RegisterForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -32,7 +35,7 @@ export default function RegisterForm() {
     }
 
     try {
-      const res = await fetch("http://localhost:8000/auth/register", {
+      const res = await fetch(`${BACKEND_URL}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
@@ -57,9 +60,9 @@ export default function RegisterForm() {
     }
   };
 
-const handleGoogleRegister = () => {
-  window.location.href = "http://localhost:8000/auth/login";
-};
+  const handleGoogleRegister = () => {
+    window.location.href = `${BACKEND_URL}/auth/login`;
+  };
   return (
     <>
       {isInputSpinnerOn && (
