@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Home() {
   const router = useRouter();
@@ -72,12 +73,12 @@ export default function Home() {
           className="relative z-10 mt-20 rounded-3xl border border-neutral-200 bg-neutral-100 p-4 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
         >
           <div className="w-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700">
-            <img
+            <Image
               src="/image.jpg"
               alt="Alisha Hi-Tech Engineering Private Limited"
-              className="aspect-[16/9] h-auto w-full object-cover"
-              height={1000}
               width={1000}
+              height={1000}
+              className="aspect-[16/9] h-auto w-full object-cover"
             />
           </div>
         </motion.div>
@@ -90,9 +91,11 @@ const Navbar = ({ router }) => {
   return (
     <nav className="flex w-full items-center justify-between border-t border-b border-neutral-200 px-4 py-4 dark:border-neutral-800">
       <div className="flex items-center gap-2">
-        <img
+        <Image
           src="/logo.jpg"
           alt="Logo"
+          width={28}
+          height={28}
           className="h-7 w-7 rounded-full object-cover"
         />
         <h1 className="text-base  md:text-xl">
