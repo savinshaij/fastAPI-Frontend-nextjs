@@ -20,23 +20,21 @@ export default function Home() {
       </div>
       <div className="px-4 py-10 md:py-20">
         <h1 className="relative z-10 mx-auto max-w-4xl text-center text-2xl font-bold text-slate-700 md:text-4xl lg:text-7xl dark:text-slate-300">
-          {"Digitally Advancing Your Business"
-            .split(" ")
-            .map((word, index) => (
-              <motion.span
-                key={index}
-                initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
-                animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-                transition={{
-                  duration: 0.3,
-                  delay: index * 0.1,
-                  ease: "easeInOut",
-                }}
-                className="mr-2 inline-block"
-              >
-                {word}
-              </motion.span>
-            ))}
+          {"Digitally Advancing Your Business".split(" ").map((word, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
+              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+              transition={{
+                duration: 0.3,
+                delay: index * 0.1,
+                ease: "easeInOut",
+              }}
+              className="mr-2 inline-block"
+            >
+              {word}
+            </motion.span>
+          ))}
         </h1>
         <motion.p
           initial={{ opacity: 0 }}
@@ -44,7 +42,8 @@ export default function Home() {
           transition={{ duration: 0.3, delay: 0.8 }}
           className="relative z-10 mx-auto max-w-xl py-4 text-center text-lg font-normal text-neutral-600 dark:text-neutral-400"
         >
-          Alisha Hi-Tech Engineering Private Limited provides IT services, software development, and cloud solutions to help your business grow.
+          Alisha Hi-Tech Engineering Private Limited provides IT services,
+          software development, and cloud solutions to help your business grow.
         </motion.p>
         <motion.div
           initial={{ opacity: 0 }}
@@ -65,7 +64,7 @@ export default function Home() {
             Contact Us
           </button>
         </motion.div>
-       
+
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -103,19 +102,19 @@ const Navbar = ({ router }) => {
         </h1>
       </div>
       <div className="relative z-10  flex gap-2 justify-center">
-          <button
-            className="px-4  rounded bg-white py-2 text-black font-semibold text-sm hover:bg-zinc-100 transition"
-            onClick={() => router.push("/login")}
-          >
-            Login
-          </button>
-          <button
-            className="px-4  rounded border border-gray-600 text-[#EEEEEE] font-semibold text-sm hover:bg-[#222831] transition"
-            onClick={() => router.push("/register")}
-          >
-            Register
-          </button>
-        </div>
+        <button
+          className="px-4  rounded bg-white py-2 text-black font-semibold text-sm hover:bg-zinc-100 transition"
+          onClick={() => router.push("/login")}
+        >
+          Login
+        </button>
+        <button
+          className="px-4  rounded border border-gray-600 text-[#EEEEEE] font-semibold text-sm hover:bg-[#222831] transition"
+          onClick={() => router.push("/register")}
+        >
+          Register
+        </button>
+      </div>
     </nav>
   );
 };
