@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
-import Image from "next/image";
 
 export default function Home() {
   const [user, setUser] = useState(null);
@@ -17,12 +16,14 @@ export default function Home() {
 
     try {
       const decoded = jwtDecode(token);
+      console.log("Decoded JWT:", decoded);
       setUser({
         name: decoded.sub?.name || "User",
         email: decoded.sub?.email,
-        picture: decoded.sub?.picture,
+        picture: decoded.sub?.picture
       });
     } catch (error) {
+      console.error("Invalid token:", error);
       localStorage.removeItem("token");
       router.replace("/login");
     }
@@ -36,33 +37,28 @@ export default function Home() {
     );
   }
 
+ 
   let picture_url = user.picture || "";
   if (picture_url === "null" || !picture_url) {
-    picture_url = "/user.png";
+    picture_url = "/user.png"; 
   } else {
-    picture_url = picture_url.split("=")[0];
+    picture_url = picture_url.split('=')[0];
   }
 
   return (
     <div className="bg-neutral-900 font-sans h-screen w-full flex flex-row justify-center items-center">
       <div className="card w-96 mx-auto bg-neutral-800 shadow-xl hover:shadow rounded-xl">
-        <Image
+        <img
+          className="w-32 mx-auto rounded-full -mt-20 border-8 border-neutral-900"
           src={picture_url}
           alt="avatar"
-          width={128}
-          height={128}
-          className="w-32 mx-auto rounded-full -mt-20 border-8 border-neutral-900"
         />
-        <div className="text-center mt-2 text-3xl font-medium text-white">
-          {user.name || "User"}
-        </div>
-        <div className="text-center mt-2 font-light text-sm text-neutral-400">
-          {user.email || "user@example.com"}
-        </div>
+        <div className="text-center mt-2 text-3xl font-medium text-white">{user.name || "User"}</div>
+        <div className="text-center mt-2 font-light text-sm text-neutral-400">{user.email || "user@example.com"}</div>
         <div className="px-6 text-center mt-2 font-light text-sm text-neutral-400">
           <p>{"Fetched token and decoded successfully"}</p>
         </div>
-
+        
         <hr className="mt-8 border-neutral-700" />
         <div className="flex p-4 justify-center">
           <button
