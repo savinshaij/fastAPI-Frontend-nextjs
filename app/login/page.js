@@ -64,14 +64,16 @@ export default function Page() {
     }
   };
 
+  if (typeof window !== "undefined" && localStorage.getItem("token")) {
+    
+    return(<div className="flex h-screen w-full justify-center items-center bg-neutral-950 text-white text-xl">
+          Loading...
+        </div>);
+  }
+
   return (
     <>
-      
-      {typeof window !== "undefined" && localStorage.getItem("token") === null ? (
-        <div className="flex h-screen w-full justify-center items-center bg-neutral-950 text-white text-xl">
-          Loading...
-        </div>
-      ) : (
+     
         <div className="flex h-screen w-full justify-center items-center bg-neutral-950">
           <div className="flex w-full justify-center items-center max-w-sm mx-auto overflow-hidden rounded-lg lg:max-w-4xl">
             <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
@@ -174,7 +176,7 @@ export default function Page() {
             </div>
           </div>
         </div>
-      )}
+      
     </>
   );
 }
