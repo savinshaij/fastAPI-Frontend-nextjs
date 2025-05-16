@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-// Use environment variable for backend URL
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export default function Page() {
@@ -15,10 +14,17 @@ export default function Page() {
   const router = useRouter();
 
   useEffect(() => {
-    const url = new URL(window.location.href);
-    const token = url.searchParams.get("token");
+    
+    const token = localStorage.getItem("token");
     if (token) {
-      localStorage.setItem("token", token);
+      router.replace("/home");
+      return;
+    }
+    
+    const url = new URL(window.location.href);
+    const urlToken = url.searchParams.get("token");
+    if (urlToken) {
+      localStorage.setItem("token", urlToken);
       router.replace("/home");
     }
   }, [router]);
